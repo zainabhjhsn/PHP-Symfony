@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex justify-content-center mt-5">
+		<div class="card shadow-sm p-4" style="max-width: 500px; width: 100%;">
+			<h3 class="text-center mb-4">Create your account</h3>
+
+			{{ form_errors(registrationForm) }}
+
+			{{ form_start(registrationForm) }}
+
+			<div class="mb-3">
+				{{ form_label(registrationForm.username, null, {'label_attr': {'class': 'form-label fw-bold'}}) }}
+				{{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+				{{ form_errors(registrationForm.username) }}
+			</div>
+
+			<div class="mb-3">
+				{{ form_label(registrationForm.plainPassword, 'Password', {'label_attr': {'class': 'form-label fw-bold'}}) }}
+				{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+				{{ form_errors(registrationForm.plainPassword) }}
+			</div>
+
+			<div class="mb-3 form-check">
+				{{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+				{{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
+				{{ form_errors(registrationForm.agreeTerms) }}
+			</div>
+
+
+			<div class="d-grid mt-3">
+				<button type="submit" class="btn btn-primary">Register</button>
+			</div>
+
+			<p class="text-center mt-3 text-muted">
+				Already have an account?
+				<a href="{{ path('app_login') }}">Login here</a>
+			</p>
+
+			{{ form_end(registrationForm) }}
+		</div>
+	</div>
+{% endblock %}
